@@ -7,7 +7,7 @@ const questions = [
         message: "Enter text for logo. (Must not be more than 3 characters.)",
         name: "text",
         validate: (value) => {
-            if (value.length >= 3) {
+            if (value.length <= 3) {
                 return true; 
             }else {
                 return "stahp";
@@ -21,10 +21,9 @@ const questions = [
         choices: ["triangle", "circle", "square"],
     },
     {
-        type: "list", 
+        type: "input", 
         message: "Select a color",
         name: "colors",
-        choices: ["red", "green", "blue"],
     },
 ];
 
@@ -34,3 +33,6 @@ inquirer.prompt(questions).then((response) => {
     const markdownText = generateMarkdown(response)
     writeToFile("README.md", markdownText);
 })};
+
+
+init();
