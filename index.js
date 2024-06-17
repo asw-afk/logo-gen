@@ -1,5 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const { createSvg } = require("./lib/svgGenerator");
 
 const questions = [ 
     {
@@ -30,8 +31,8 @@ const questions = [
 
 function init () {
 inquirer.prompt(questions).then((response) => {
-    const markdownText = generateMarkdown(response)
-    writeToFile("logo.svg", markdownText);
+    const makeSvg = createSvg(response)
+    writeToFile("logo.svg", makeSvg);
 })};
 
 
