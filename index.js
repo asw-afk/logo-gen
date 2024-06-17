@@ -31,7 +31,7 @@ const questions = [
 function init () {
 inquirer.prompt(questions).then((response) => {
     const markdownText = generateMarkdown(response)
-    writeToFile("README.md", markdownText);
+    writeToFile("logo.svg", markdownText);
 })};
 
 
