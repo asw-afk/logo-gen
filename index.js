@@ -37,7 +37,7 @@ const questions = () => {
   ]);
 };
 
-const init = (text) => {
+const init = () => {
   questions().then((answers) => {
     let text;
     let svgShape;
@@ -63,8 +63,14 @@ const init = (text) => {
     text.setTextColor(answers.color);
 console.log("got to text color")
 
+    function renderSVG(Data) {
+      fs.writeFile("logo.svg", init(Data), () => {
+        console.log("gjmsdrfg");
+      })
+    }
 
-    fs.writeFile("logo.svg", textInput.render);
+
+  renderSVG();
 
   });
 };
