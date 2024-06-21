@@ -1,6 +1,5 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const { createSvg } = require("./lib/svgGenerator");
 const { Triangle, Circle, Square } = require("./lib/shape");
 const { textInput} = require("./lib/text");
 
@@ -67,8 +66,6 @@ console.log("got to text color")
 
     fs.writeFile("logo.svg", textInput.render);
 
-    // createSvg(svgShape.render());
-    // fs.writeFile("logo.svg", makeSvg);
   });
 };
 
