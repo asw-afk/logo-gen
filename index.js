@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const { createSvg } = require("./lib/svgGenerator");
+const { Triangle, Circle, Square } = require("./lib/shape");
 
 const questions = [
   {
@@ -24,22 +25,45 @@ const questions = [
   {
     type: "input",
     message: "Select a color",
-    name: "colors",
+    name: "color",
   },
 ];
 
 function init() {
-  inquirer.prompt(questions).then((data, response) => {
-    if (data.shape === "triangle") {
-      data.shape =
-        "<polygon points=150,0 300,300 0,300 style=fill:${this.color} />";
+  inquirer.prompt(questions).then((answers) => {
+    let svgShape;
+
+    if (answers.shape === "triangle") {
+      svgShape = new Triangle();
+    } else if (answers.shape === "circle") {
+      svgShape = new Circle();
+    } else if (answers.shape === "square") {
+      svgShape = new Square();
     } else {
-        return false
+      console.log("shape not recognized");
+      return;
     }
 
-      const makeSvg = createSvg(response);
-      writeFile("logo.svg", makeSvg);
-    }
-  )};
+    // switch (answers.shape) {
+    //   case "triangle":
+    //     svgShape = new Triangle();
+    //     break;
+    //   case "circle":
+    //     svgShape = new Circle();
+    //     break;
+    //   case "square":
+    //     svgShape = new Square();
+    //     break;
+    //   default:
+    //     console.log("shape not recognized");
+    //     break;
+    // }
+
+    svgShape.setColor(answers.color);
+
+    createSvg(svgShape.render());
+    // fs.writeFile("logo.svg", makeSvg);
+  });
+}
 
 init();
