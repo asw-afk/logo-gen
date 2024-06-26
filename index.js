@@ -40,7 +40,7 @@ const questions = () => {
 const init = () => {
   questions()
     .then((answers) => {
-      // let text;
+   
       let svgShape;
 
       if (answers.shape === "triangle") {
