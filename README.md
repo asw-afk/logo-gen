@@ -11,6 +11,7 @@
    After following these instructions follow the prompts and you will have a simple logo for your prefereed company. 
 
   Click [here](https://www.youtube.com/watch?v=QJWNDun45Dc) for an example of the generator.
+  If this link is unavailable there is another located within the library folder under "more..."
   
   ## Test
   This file includes a test for the shape classes to make sure they run properly. 
